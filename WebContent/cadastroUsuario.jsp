@@ -18,7 +18,7 @@
 </head>
 <body>
 	<a href="acessoliberado.jsp"><img alt="Inicio" title="Inicio"
-		src="resources/img/home.png" width="50px" height="50px"></a>
+		src="resources/img/home.png"></a>
 
 	<a href="index.jsp"><img alt="Sair" title="Sair"
 		src="resources/img/sair.png" width="50px" height="50px"></a>
@@ -32,57 +32,53 @@
 		enctype="multipart/form-data">
 		<ul class="form-style-1">
 			<li>
-				<table>
-					<div class="col-md-11 control-label">
-						<p class="help-block">
-							<h11 style="color: red">*</h11>
-							Campo Obrigatório
-						</p>
-					</div>
-					<tr>
-						<td>ID:</td>
-						<td><input type="text" readonly="readonly" id="id" name="id"
-							placeholder="Preenchimento automático" value="${user.id}" /></td>
-						<td>CEP:</td>
-						<td><input type="text" id="cep" name="cep" value=""
-							onblur="consultarCep()" placeholder="..." maxlength="9"
-							value="${user.cep}" /></td>
-					</tr>
-					<tr>
-						<td>Login:</td>
-						<td><input type="text" id="login" name="login"
-							value="${user.login}" placeholder="..." maxlength="10" /></td>
-						<td>Rua:</td>
-						<td><input type="text" id="rua" name="rua"
-							value="${user.rua}" placeholder="..." maxlength="50" /></td>
-					</tr>
-					<tr>
-						<td>Senha:</td>
-						<td><input type="password" id="senha" name="senha"
-							value="${user.senha}" placeholder="..." maxlength="10" /></td>
-						<td>Bairro:</td>
-						<td><input type="text" id="bairro" name="bairro"
-							value="${user.bairro}" placeholder="..." maxlength="50" /></td>
-					</tr>
-					<tr>
-						<td>Nome:</td>
-						<td><input type="text" id="nome" name="nome"
-							value="${user.nome}" placeholder="..." maxlength="50"
-							placeholder="Informe o nome" /></td>
-						<td>Cidade:</td>
-						<td><input type="text" id="cidade" name="cidade"
-							value="${user.cidade}" placeholder="..." maxlength="50" /></td>
-					</tr>
+				<center>
+					<table>
+						<tr>
+							<td>ID:</td>
+							<td><input type="text" readonly="readonly" id="id" name="id"
+								placeholder="Preenchimento automático" value="${user.id}" /></td>
 
-					<tr>
-						<td>IBGE:</td>
-						<td><input type="text" id="ibge" name="ibge"
-							value="${user.ibge}" placeholder="Preenchimento automático"
-							maxlength="20" /></td>
+							<td>CEP:</td>
+							<td><input type="text" id="cep" name="cep" value=""
+								onblur="consultarCep()" placeholder="..." maxlength="9"
+								value="${user.cep}" /></td>
+						</tr>
+						<tr>
+							<td>Login:</td>
+							<td><input type="text" id="login" name="login"
+								value="${user.login}" placeholder="..." maxlength="10" /></td>
+							<td>Rua:</td>
+							<td><input type="text" id="rua" name="rua"
+								value="${user.rua}" placeholder="..." maxlength="50" /></td>
+						</tr>
+						<tr>
+							<td>Senha:</td>
+							<td><input type="password" id="senha" name="senha"
+								value="${user.senha}" placeholder="..." maxlength="10" /></td>
+							<td>Bairro:</td>
+							<td><input type="text" id="bairro" name="bairro"
+								value="${user.bairro}" placeholder="..." maxlength="50" /></td>
+						</tr>
+						<tr>
+							<td>Nome:</td>
+							<td><input type="text" id="nome" name="nome"
+								value="${user.nome}" placeholder="..." maxlength="50"
+								placeholder="Informe o nome" /></td>
+							<td>Cidade:</td>
+							<td><input type="text" id="cidade" name="cidade"
+								value="${user.cidade}" placeholder="..." maxlength="50" /></td>
+						</tr>
 
-						<td>Ativo:</td>
-						<td><input type="checkbox" id="ativo" name="ativo"
-							<%if (request.getAttribute("user") != null) {
+						<tr>
+							<td>IBGE:</td>
+							<td><input type="text" id="ibge" name="ibge"
+								value="${user.ibge}" placeholder="Preenchimento automático"
+								maxlength="20" /></td>
+
+							<td>Ativo:</td>
+							<td><input type="checkbox" id="ativo" name="ativo"
+								<%if (request.getAttribute("user") != null) {
 
 				BeanUsuario user = (BeanUsuario) request.getAttribute("user");
 				if (user.isAtivo()) {
@@ -91,16 +87,16 @@
 					out.print(" ");
 				}
 			}%>>
-						</td>
-					</tr>
-					<tr>
-						<td>Perfil:</td>
-						<td><select id="perfil" name="perfil"
-							style="width: 185px; height: 30px;">
-								<option value="nao_informado">SELECIONE</option>
+							</td>
+						</tr>
+						<tr>
+							<td>Perfil:</td>
+							<td><select id="perfil" name="perfil"
+								style="width: 185px; height: 30px;">
+									<option value="nao_informado">SELECIONE</option>
 
-								<option value="admistrador"
-									<%if (request.getAttribute("user") != null) {
+									<option value="admistrador"
+										<%if (request.getAttribute("user") != null) {
 				BeanUsuario user = (BeanUsuario) request.getAttribute("user");
 				if (user.getPerfil().equalsIgnoreCase("admistrador")) {
 					out.print(" ");
@@ -109,8 +105,8 @@
 				}
 			}%>>Administrador</option>
 
-								<option value="secretario"
-									<%if (request.getAttribute("user") != null) {
+									<option value="secretario"
+										<%if (request.getAttribute("user") != null) {
 				BeanUsuario user = (BeanUsuario) request.getAttribute("user");
 				if (user.getPerfil().equalsIgnoreCase("secretario")) {
 					out.print(" ");
@@ -119,8 +115,8 @@
 				}
 			}%>>Secretário(a)</option>
 
-								<option value="gerente"
-									<%if (request.getAttribute("user") != null) {
+									<option value="gerente"
+										<%if (request.getAttribute("user") != null) {
 				BeanUsuario user = (BeanUsuario) request.getAttribute("user");
 				if (user.getPerfil().equalsIgnoreCase("gerente")) {
 					out.print(" ");
@@ -129,8 +125,8 @@
 				}
 			}%>>Gerente</option>
 
-								<option value="funcionario"
-									<%if (request.getAttribute("user") != null) {
+									<option value="funcionario"
+										<%if (request.getAttribute("user") != null) {
 
 				BeanUsuario user = (BeanUsuario) request.getAttribute("user");
 				if (user.getPerfil().equalsIgnoreCase("funcionario")) {
@@ -139,16 +135,17 @@
 					out.print(" ");
 				}
 			}%>>Funcionário</option>
-						</select></td>
-
-						<td>Curriculo:</td>
-						<td><input type="file" name="curriculo" value="curriculo">
-						</td>
-					</tr>
-					<tr>
-						<td>Sexo:</td>
-						<td><input type="radio" name="sexo"
-							<%if (request.getAttribute("user") != null) {
+							</select></td>
+							<div>
+								<td>Curriculo:</td>
+								<td><input type="file" name="curriculo" value="curriculo">
+								</td>
+						</tr>
+						</div>
+						<tr>
+							<td>Sexo:</td>
+							<td><input type="radio" name="sexo"
+								<%if (request.getAttribute("user") != null) {
 
 				BeanUsuario user = (BeanUsuario) request.getAttribute("user");
 				if (user.getSexo().equalsIgnoreCase("masculino")) {
@@ -158,9 +155,9 @@
 				}
 
 			}%>
-							value="masculino">Masculino</input> <input type="radio"
-							name="sexo"
-							<%if (request.getAttribute("user") != null) {
+								value="masculino">Masculino</input> <input type="radio"
+								name="sexo"
+								<%if (request.getAttribute("user") != null) {
 
 				BeanUsuario user = (BeanUsuario) request.getAttribute("user");
 				if (user.getSexo().equalsIgnoreCase("feminino")) {
@@ -170,21 +167,22 @@
 				}
 
 			}%>
-							value="feminino">Feminino</input></td>
+								value="feminino">Feminino</input></td>
 
-						<td>Foto:</td>
-						<td><input type="file" name="foto"></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td><input type="submit" value="Salvar" style="width: 173px;" /></td>
-						<td></td>
-						<td><input type="submit" style="width: 173px;"
-							value="Cancelar"
-							onclick="document.getElementById('formUser').action = 'salvarUsuario?acao=reset'" /></td>
-					</tr>
-
-				</table>
+							<td>Foto:</td>
+							<td><input type="file" name="foto"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><input type="submit" value="Salvar"
+								style="width: 173px;" /></td>
+							<td></td>
+							<td><input type="submit" style="width: 173px;"
+								value="Cancelar"
+								onclick="document.getElementById('formUser').action = 'salvarUsuario?acao=reset'" /></td>
+						</tr>
+					</table>
+				</center>
 			</li>
 		</ul>
 	</form>

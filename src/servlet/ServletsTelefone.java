@@ -39,14 +39,14 @@ public class ServletsTelefone extends HttpServlet {
 				if(acao.equalsIgnoreCase("addFone")) {
 					request.getSession().setAttribute("userEscolhido", beanUsuario);
 					request.setAttribute("userEscolhido", beanUsuario);
-					RequestDispatcher view = request.getRequestDispatcher("/telefones.jsp");
+					RequestDispatcher view = request.getRequestDispatcher("/cadastroTelefone.jsp");
 					request.setAttribute("telefone", daoTelefone.listar(beanUsuario.getId()));
 					view.forward(request, response);
 				} else if(acao.equalsIgnoreCase("deleteFone")) {
 					String foneId = request.getParameter("foneId");
 					daoTelefone.delete(foneId);
 					
-					RequestDispatcher view = request.getRequestDispatcher("/telefones.jsp");
+					RequestDispatcher view = request.getRequestDispatcher("/cadastroTelefone.jsp");
 					request.setAttribute("userEscolhido", beanUsuario);
 					request.setAttribute("telefone", daoTelefone.listar(Long.parseLong(user)));
 					request.setAttribute("msg", "Excluído Com Sucesso!");
@@ -77,7 +77,7 @@ public class ServletsTelefone extends HttpServlet {
 			
 			if (numero == null || (numero != null && numero.isEmpty())){
 				
-				RequestDispatcher view = request.getRequestDispatcher("/telefones.jsp");
+				RequestDispatcher view = request.getRequestDispatcher("/cadastroTelefone.jsp");
 				request.setAttribute("telefone", daoTelefone.listar(beanUsuario.getId()));
 				request.setAttribute("msg", "Informe o numero do telefone!");
 				view.forward(request, response);
@@ -92,7 +92,7 @@ public class ServletsTelefone extends HttpServlet {
 				request.getSession().setAttribute("userEscolhido", beanUsuario);
 				request.setAttribute("userEscolhido", beanUsuario);
 			
-				RequestDispatcher view = request.getRequestDispatcher("/telefones.jsp");
+				RequestDispatcher view = request.getRequestDispatcher("/cadastroTelefone.jsp");
 				request.setAttribute("telefone", daoTelefone.listar(beanUsuario.getId()));
 				request.setAttribute("msg", "Salvo Com Sucesso!");
 				view.forward(request, response);
