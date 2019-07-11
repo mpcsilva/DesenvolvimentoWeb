@@ -103,7 +103,7 @@
 					out.print("selected=\"selected\"");
 					out.print(" ");
 				}
-			}%>>Administrador</option>
+			}%>>Administrador (a)</option>
 
 									<option value="secretario"
 										<%if (request.getAttribute("user") != null) {
@@ -134,7 +134,7 @@
 					out.print("selected=\"selected\"");
 					out.print(" ");
 				}
-			}%>>Funcionário</option>
+			}%>>Funcionário (a)</option>
 							</select></td>
 							<div>
 								<td>Curriculo:</td>
