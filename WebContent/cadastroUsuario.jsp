@@ -95,15 +95,16 @@
 								style="width: 185px; height: 30px;">
 									<option value="nao_informado">SELECIONE</option>
 
-									<option value="admistrador"
+									<option value="administrador"
 										<%if (request.getAttribute("user") != null) {
 				BeanUsuario user = (BeanUsuario) request.getAttribute("user");
-				if (user.getPerfil().equalsIgnoreCase("admistrador")) {
+				if (user.getPerfil().equalsIgnoreCase("administrador")) {
 					out.print(" ");
 					out.print("selected=\"selected\"");
 					out.print(" ");
 				}
-			}%>>Administrador (a)</option>
+			}%>>Administrador
+										(a)</option>
 
 									<option value="secretario"
 										<%if (request.getAttribute("user") != null) {
@@ -134,7 +135,8 @@
 					out.print("selected=\"selected\"");
 					out.print(" ");
 				}
-			}%>>Funcionário (a)</option>
+			}%>>Funcionário
+										(a)</option>
 							</select></td>
 							<div>
 								<td>Curriculo:</td>
@@ -213,6 +215,7 @@
 				<th>Telefone</th>
 				<th>Delete</th>
 				<th>Editar</th>
+
 			</tr>
 			<c:forEach items="${usuarios}" var="user">
 				<tr>
@@ -274,6 +277,11 @@
 				return false;
 			} else if (document.getElementById("telefone").value == '') {
 				alert("Informe o Telefone!");
+				return false;
+			}
+
+			else if (document.getElementById("sexo").valueOf == '') {
+				alert("Informe o sexo!");
 				return false;
 			}
 			return true;

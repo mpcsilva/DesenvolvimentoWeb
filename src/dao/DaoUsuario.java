@@ -22,6 +22,7 @@ public class DaoUsuario {
 	 * Construtor DaoUsuario() Recebe um Objeto connection da Classe
 	 * SingleConnection
 	 */
+
 	public DaoUsuario() {
 		connection = SingleConnection.getConnection();
 	}
@@ -31,6 +32,7 @@ public class DaoUsuario {
 	 * 
 	 * @param BeanCursoJsp usuario = Objeto Usuário da Classe BeanCursoJsp
 	 */
+
 	public void salvar(BeanUsuario usuario) {
 		try {
 			String sql = "INSERT INTO usuario(login, senha, nome, telefone, cep, rua, bairro, cidade, estado, "
@@ -71,21 +73,20 @@ public class DaoUsuario {
 	/*
 	 * Método listar() Responsável Por Listar Todos os Usuários do Sistema
 	 */
-	
-	
-	public List<BeanUsuario> listar (String descricaoconsulta) throws SQLException{
-		String sql = "SELECT * FROM usuario where login <> 'admin' and nome like '%"+descricaoconsulta+"%'";
+
+	public List<BeanUsuario> listar(String descricaoconsulta)
+			throws SQLException {
+		String sql = "SELECT * FROM usuario where login <> 'admin' and nome like '%"
+				+ descricaoconsulta + "%'";
 		return consultarUsuarios(sql);
 	}
-	
-	
+
 	public List<BeanUsuario> listar() throws Exception {
 		String sql = "SELECT * FROM usuario where login <> 'admin'";
 		return consultarUsuarios(sql);
 	}
 
-	private List<BeanUsuario> consultarUsuarios(String sql)
-			throws SQLException {
+	private List<BeanUsuario> consultarUsuarios(String sql) throws SQLException {
 		List<BeanUsuario> listar = new ArrayList<BeanUsuario>();
 		PreparedStatement statement = connection.prepareStatement(sql);
 		ResultSet resultSet = statement.executeQuery();
@@ -110,13 +111,13 @@ public class DaoUsuario {
 					.getString("curriculobase64"));
 			beanUsuario.setContentTypeCurriculo(resultSet
 					.getString("contenttypecurriculo"));
-			
+
 			beanUsuario.setAtivo(resultSet.getBoolean("ativo"));
 			beanUsuario.setSexo(resultSet.getString("sexo"));
 			beanUsuario.setPerfil(resultSet.getString("perfil"));
 			listar.add(beanUsuario);
 		}
-		
+
 		return listar;
 	}
 
@@ -125,6 +126,7 @@ public class DaoUsuario {
 	 * 
 	 * @param String id = Atributo ID do Usuário
 	 */
+
 	public void delete(String id) {
 		if (id != null && !id.isEmpty()) {
 			try {
@@ -176,7 +178,7 @@ public class DaoUsuario {
 					.getString("curriculobase64"));
 			beanUsuario.setContentTypeCurriculo(resultSet
 					.getString("contenttypecurriculo"));
-			
+
 			beanUsuario.setAtivo(resultSet.getBoolean("ativo"));
 			beanUsuario.setSexo(resultSet.getString("sexo"));
 			beanUsuario.setPerfil(resultSet.getString("perfil"));
@@ -219,6 +221,7 @@ public class DaoUsuario {
 	 * 
 	 * @param String senha = Atributo Senha do Usuário
 	 */
+
 	public boolean validarSenha(String senha) throws Exception {
 		String sql = "SELECT COUNT(1) as qtde FROM usuario WHERE senha = '"
 				+ senha + "'";
@@ -259,7 +262,8 @@ public class DaoUsuario {
 			sql.append(" WHERE id = " + usuario.getId());
 
 			// fotobase64, contenttype, curriculobase64, contenttypecurriculo
-			PreparedStatement preparedStatement = connection.prepareStatement(sql.toString());
+			PreparedStatement preparedStatement = connection
+					.prepareStatement(sql.toString());
 			preparedStatement.setString(1, usuario.getLogin());
 			preparedStatement.setString(2, usuario.getSenha());
 			preparedStatement.setString(3, usuario.getNome());
@@ -280,18 +284,20 @@ public class DaoUsuario {
 			}
 
 			if (usuario.isAtualizarPdf()) {
-				
-				if (usuario.isAtualizarPdf() && !usuario.isAtualizarImage()){
-					preparedStatement.setString(14, usuario.getCurriculoBase64());
+
+				if (usuario.isAtualizarPdf() && !usuario.isAtualizarImage()) {
+					preparedStatement.setString(14,
+							usuario.getCurriculoBase64());
 					preparedStatement.setString(15,
 							usuario.getContentTypeCurriculo());
-				}else {
-					preparedStatement.setString(16, usuario.getCurriculoBase64());
+				} else {
+					preparedStatement.setString(16,
+							usuario.getCurriculoBase64());
 					preparedStatement.setString(17,
 							usuario.getContentTypeCurriculo());
 				}
 
-			}else {
+			} else {
 				if (usuario.isAtualizarImage()) {
 					preparedStatement.setString(16,
 							usuario.getFotoBase64Miniatura());

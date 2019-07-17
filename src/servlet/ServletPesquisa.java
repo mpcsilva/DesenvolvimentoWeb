@@ -20,24 +20,27 @@ public class ServletPesquisa extends HttpServlet {
 
 	private DaoUsuario daoUsuario = new DaoUsuario();
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		String descricaoPesquisa = request.getParameter("descricaoconsulta");
-		if (descricaoPesquisa != null && !descricaoPesquisa.trim().isEmpty()){
+		if (descricaoPesquisa != null && !descricaoPesquisa.trim().isEmpty()) {
 			try {
-				
-				
-				List<BeanUsuario> listaPesquisa = daoUsuario.listar(descricaoPesquisa);
-				
-				RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
+
+				List<BeanUsuario> listaPesquisa = daoUsuario
+						.listar(descricaoPesquisa);
+
+				RequestDispatcher view = request
+						.getRequestDispatcher("/cadastroUsuario.jsp");
 				request.setAttribute("usuarios", listaPesquisa);
 				view.forward(request, response);
-				
+
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}else {
+		} else {
 			try {
-				RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
+				RequestDispatcher view = request
+						.getRequestDispatcher("/cadastroUsuario.jsp");
 				request.setAttribute("usuarios", daoUsuario.listar());
 				view.forward(request, response);
 			} catch (Exception e) {
