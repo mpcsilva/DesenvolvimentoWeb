@@ -131,6 +131,7 @@ public class ServletUsuario extends HttpServlet {
 	 * javax.servlet.http.HttpServlet#doPost(javax.servlet.http.HttpServletRequest
 	 * , javax.servlet.http.HttpServletResponse)
 	 */
+
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String acao = request.getParameter("acao");
