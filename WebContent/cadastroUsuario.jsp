@@ -278,9 +278,10 @@
 			} else if (document.getElementById("telefone").value == '') {
 				alert("Informe o Telefone!");
 				return false;
-			}
-
-			else if (document.getElementById("sexo").valueOf == '') {
+			} else if (document.getElementById("perfil").value == ''){
+				alert("Selecione o perfil do usuário!").
+				return false;
+			} else if (document.getElementById("sexo").valueOf == '') {
 				alert("Informe o sexo!");
 				return false;
 			}

@@ -273,6 +273,9 @@ public class ServletUsuario extends HttpServlet {
 					request.setAttribute("msg",
 							"Este Login Pertence a Um Usuário!");
 					podeInserir = false;
+				} else if (perfil == null || perfil.isEmpty()) {
+					msg = "O perfil do usuário deve ser informado!";
+					podeInserir = false;
 				} else if (id == null || id.isEmpty()
 						&& !daoUsuario.validarSenha(senha)) {
 					request.setAttribute("msg",
