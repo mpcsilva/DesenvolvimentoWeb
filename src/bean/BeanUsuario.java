@@ -16,7 +16,7 @@ public class BeanUsuario {
 	private String cidade;
 	private String estado;
 	private String ibge;
-	private String fotoBase64;
+	private String fotobase64;
 	private String fotoBase64Miniatura;
 	private String curriculoBase64;
 	private String contentType;
@@ -79,7 +79,7 @@ public class BeanUsuario {
 
 	public String getTempFotoUser() {
 
-		tempFotoUser = "data:" + contentType + ";base64," + fotoBase64;
+		tempFotoUser = "data:" + contentType + ";base64," + fotobase64;
 
 		return tempFotoUser;
 	}
@@ -100,12 +100,12 @@ public class BeanUsuario {
 		return contentTypeCurriculo;
 	}
 
-	public void setFotoBase64(String fotoBase64) {
-		this.fotoBase64 = fotoBase64;
+	public void setFotobase64(String fotoBase64) {
+		this.fotobase64 = fotoBase64;
 	}
 
 	public String getFotoBase64() {
-		return fotoBase64;
+		return fotobase64;
 	}
 
 	public void setContentType(String contentType) {
