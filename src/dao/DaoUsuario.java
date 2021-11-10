@@ -170,7 +170,7 @@ public class DaoUsuario {
 			beanUsuario.setCidade(resultSet.getString("cidade"));
 			beanUsuario.setEstado(resultSet.getString("estado"));
 			beanUsuario.setIbge(resultSet.getString("ibge"));
-			beanUsuario.setFotoBase64(resultSet.getString("fotobase64"));
+			beanUsuario.setFotobase64(resultSet.getString("fotobase64"));
 			beanUsuario.setFotoBase64Miniatura(resultSet
 					.getString("fotobase64miniatura"));
 			beanUsuario.setContentType(resultSet.getString("contenttype"));

@@ -87,15 +87,15 @@
 					out.print(" ");
 				}
 			}%>>
-			</td>
-			</tr>
-			<tr>
-				<td>Perfil:</td>
-					<td><select id="perfil" name="perfil"
-						style="width: 185px; height: 30px;">
-						<option value="nao_informado">SELECIONE</option>
-						<option value="administrador"
-					<%if (request.getAttribute("user") != null) {
+							</td>
+						</tr>
+						<tr>
+							<td>Perfil:</td>
+							<td><select id="perfil" name="perfil"
+								style="width: 185px; height: 30px;">
+									<option value="nao_informado">SELECIONE</option>
+									<option value="administrador"
+										<%if (request.getAttribute("user") != null) {
 				BeanUsuario user = (BeanUsuario) request.getAttribute("user");
 				if (user.getPerfil().equalsIgnoreCase("administrador")) {
 					out.print(" ");
@@ -229,8 +229,8 @@
 					</c:if>
 					<c:if test="${user.fotoBase64Miniatura == null}">
 						<td><img alt="Imagem User" src="resources/img/userpadrao.png"
-							width="32px" height="32px" onclick="alert('Usuário não possui imagem cadastrada.')">
-						</td>
+							width="32px" height="32px"
+							onclick="alert('Usuário não possui imagem cadastrada.')"></td>
 					</c:if>
 
 					<c:if test="${user.curriculoBase64.isEmpty() == false}">
@@ -277,7 +277,7 @@
 			} else if (document.getElementById("telefone").value == '') {
 				alert("Informe o Telefone!");
 				return false;
-			} else if (document.getElementById("perfil").value == ''){
+			} else if (document.getElementById("perfil").value == '') {
 				alert("Selecione o perfil do usuário!");
 				return false;
 			} else if (document.getElementById("sexo").valueOf == '') {

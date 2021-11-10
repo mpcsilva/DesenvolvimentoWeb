@@ -197,7 +197,7 @@ public class ServletUsuario extends HttpServlet {
 								.encodeBase64String(converteStremParabyte(imagemFoto
 										.getInputStream()));
 
-						usuario.setFotoBase64(fotoBase64);
+						usuario.setFotobase64(fotoBase64);
 						usuario.setContentType(imagemFoto.getContentType());
 
 						/* Inicio miniatura imagem */
